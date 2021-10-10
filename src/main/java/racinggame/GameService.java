@@ -12,5 +12,6 @@ public class GameService {
 	}
 	public void play() {
 		List<CarName> carNames = GameServiceUtil.askCarNames();
+		Turn turn = GameServiceUtil.askTurnNum();
 	}
 }

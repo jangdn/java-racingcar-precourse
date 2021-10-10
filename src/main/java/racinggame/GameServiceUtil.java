@@ -28,4 +28,27 @@ public class GameServiceUtil {
 		}
 		return carNames;
 	}
+
+	public static Turn askTurnNum() {
+		return askTurnNumByConsole();
+	}
+
+	private static Turn askTurnNumByConsole() {
+		String inputStrings = Console.readLine();
+		try {
+			return convertTurn(inputStrings);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return askTurnNumByConsole();
+		}
+	}
+
+	static Turn convertTurn(String inputStrings) {
+		try {
+			int turnNum = Integer.parseInt(inputStrings);
+			return Turn.of(turnNum);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("[ERROR] 입력값에 숫자가 존재하지 않습니다.");
+		}
+	}
 }

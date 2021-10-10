@@ -12,7 +12,7 @@ class CarNameTest {
 				assertThrows(IllegalArgumentException.class, () -> CarName.of("나는5자이상"));
 
 		// then
-		assertTrue("ERROR".contains(exception.getMessage()));
+		assertTrue(exception.getMessage().contains("ERROR"));
 	}
 
 }
