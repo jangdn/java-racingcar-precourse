@@ -1,18 +1,20 @@
 package racinggame;
 
 public class Car {
-	private final String name;
 	private Position position;
+	private final String name;
 
 	public Car(String name) {
 		this.name = name;
 		this.position = Position.initial();
 	}
 
-	public void run(int no) {
-		if (MoveRule.isMovable(no)) {
+	public boolean move(CarValue carValue) {
+		if (MoveRule.isMovable(carValue)) {
 			this.position.moveForward();
+			return true;
 		}
+		return false;
 	}
 
 	public Position getPosition() {
