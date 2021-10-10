@@ -3,7 +3,6 @@ package racinggame;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class CarTest {
 
 	@BeforeEach
 	void setUp() {
-		car = new Car("sonata");
+		car = new Car(CarName.of("소나타"));
 	}
 
 	@Test
@@ -51,8 +50,7 @@ public class CarTest {
 	@Test
 	public void 한_턴_동안_3이하가_나온다면_자동차는_움직이지_않는다() {
 		// given
-		Car firstCar = new Car("첫번째차");
-		Cars firstClassCars = new Cars(Arrays.asList(firstCar));
+		Cars firstClassCars = new Cars(Arrays.asList(car));
 		List<Boolean> eachCarIsMoves;
 
 		// when
@@ -73,9 +71,9 @@ public class CarTest {
 	@Test
 	public void 한_턴_동안_여러대의차는_조건에따라_움직이거나_멈춰야한다() {
 		// given
-		Car firstCar = new Car("첫번째차");
-		Car secondCar = new Car("두번째차");
-		Car thirdCar = new Car("세번째차");
+		Car firstCar = new Car(CarName.of("첫번째차"));
+		Car secondCar = new Car(CarName.of("두번째차"));
+		Car thirdCar = new Car(CarName.of("세번째차"));
 		Cars firstClassCars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar));
 		List<Boolean> eachCarIsMoves;
 

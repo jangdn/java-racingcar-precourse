@@ -2,9 +2,9 @@ package racinggame;
 
 public class Car {
 	private Position position;
-	private final String name;
+	private CarName name;
 
-	public Car(String name) {
+	public Car(CarName name) {
 		this.name = name;
 		this.position = Position.initial();
 	}
