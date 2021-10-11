@@ -2,7 +2,7 @@ package racinggame;
 
 import nextstep.utils.Randoms;
 
-public class CarValue {
+public final class CarValue {
 	private static final int RESTRICT_END_NUM = 9;
 	private static final int RESTRICT_START_NUM = 0;
 

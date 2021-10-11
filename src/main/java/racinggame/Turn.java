@@ -1,6 +1,6 @@
 package racinggame;
 
-public class Turn {
+public final class Turn {
 	private int num;
 
 	private Turn(int num) {

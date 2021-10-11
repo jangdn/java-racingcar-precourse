@@ -1,7 +1,7 @@
 package racinggame;
 
 
-public class Position {
+public final class Position {
 	private int value;
 
 	private Position(int value) {

@@ -3,7 +3,7 @@ package racinggame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
+public final class Cars {
 
 	private List<Car> values;
 
