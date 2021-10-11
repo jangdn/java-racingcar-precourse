@@ -1,5 +1,7 @@
 package racinggame;
 
+import static racinggame.GameMessage.CAR_POSITION_STATE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,14 @@ public final class Cars {
 		for (Car car : values) {
 			CarValue carValue = CarValue.createValue();
 			car.run(carValue);
+		}
+	}
+
+	public void printCarState() {
+		for (Car car : values) {
+			System.out.println(String.format(CAR_POSITION_STATE.getMessageForm(),
+					car.getName(),
+					car.getPositionState()));
 		}
 	}
 }

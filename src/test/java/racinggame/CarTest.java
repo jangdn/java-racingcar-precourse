@@ -23,10 +23,10 @@ public class CarTest {
 
 	@Test
 	void input이_3이라면_멈춤() {
-		int beforePosition = car.getPosition().getValue();
+		int beforePosition = car.getPosition();
 
 		car.run(CarValue.of(3));
-		int afterPosition = car.getPosition().getValue();
+		int afterPosition = car.getPosition();
 
 		AssertionsForClassTypes.assertThat(afterPosition)
 				.isEqualTo(beforePosition);
@@ -34,10 +34,10 @@ public class CarTest {
 
 	@Test
 	void input이_4라면_전진() {
-		int beforePosition = car.getPosition().getValue();
+		int beforePosition = car.getPosition();
 
 		car.run(CarValue.of(4));
-		int afterPosition = car.getPosition().getValue();
+		int afterPosition = car.getPosition();
 
 		AssertionsForClassTypes.assertThat(afterPosition)
 				.isGreaterThan(beforePosition);
@@ -47,7 +47,7 @@ public class CarTest {
 	public void 한_턴_동안_3이하가_나온다면_자동차는_움직이지_않는다() {
 		// given
 		Cars firstClassCars = new Cars(Arrays.asList(car));
-		int beforePosition = car.getPosition().getValue();
+		int beforePosition = car.getPosition();
 
 		// when
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
@@ -58,7 +58,7 @@ public class CarTest {
 		}
 
 		// then
-		int afterPosition = car.getPosition().getValue();
+		int afterPosition = car.getPosition();
 		AssertionsForClassTypes.assertThat(afterPosition)
 				.isEqualTo(beforePosition);
 	}
@@ -70,9 +70,9 @@ public class CarTest {
 		Car secondCar = new Car(CarName.of("두번째차"));
 		Car thirdCar = new Car(CarName.of("세번째차"));
 		Cars firstClassCars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar));
-		List<Integer> beforePositions = Arrays.asList(firstCar.getPosition().getValue(),
-				secondCar.getPosition().getValue(),
-				thirdCar.getPosition().getValue());
+		List<Integer> beforePositions = Arrays.asList(firstCar.getPosition(),
+				secondCar.getPosition(),
+				thirdCar.getPosition());
 
 
 		// when
@@ -84,11 +84,11 @@ public class CarTest {
 		}
 
 		// then
-		AssertionsForClassTypes.assertThat(firstCar.getPosition().getValue())
+		AssertionsForClassTypes.assertThat(firstCar.getPosition())
 				.isEqualTo(beforePositions.get(0));
-		AssertionsForClassTypes.assertThat(secondCar.getPosition().getValue())
+		AssertionsForClassTypes.assertThat(secondCar.getPosition())
 				.isGreaterThan(beforePositions.get(1));
-		AssertionsForClassTypes.assertThat(thirdCar.getPosition().getValue())
+		AssertionsForClassTypes.assertThat(thirdCar.getPosition())
 				.isGreaterThan(beforePositions.get(2));
 	}
 }
