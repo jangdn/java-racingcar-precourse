@@ -9,12 +9,10 @@ public class Car {
 		this.position = Position.initial();
 	}
 
-	public boolean move(CarValue carValue) {
+	public void run(CarValue carValue) {
 		if (MoveRule.isMovable(carValue)) {
 			this.position.moveForward();
-			return true;
 		}
-		return false;
 	}
 
 	public Position getPosition() {

@@ -3,10 +3,8 @@ package racinggame;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,10 +25,9 @@ public class CarTest {
 	void input이_3이라면_멈춤() {
 		int beforePosition = car.getPosition().getValue();
 
-		boolean isMove = car.move(CarValue.of(3));
+		car.run(CarValue.of(3));
 		int afterPosition = car.getPosition().getValue();
 
-		AssertionsForClassTypes.assertThat(isMove).isFalse();
 		AssertionsForClassTypes.assertThat(afterPosition)
 				.isEqualTo(beforePosition);
 	}
@@ -39,10 +36,9 @@ public class CarTest {
 	void input이_4라면_전진() {
 		int beforePosition = car.getPosition().getValue();
 
-		boolean isMove = car.move(CarValue.of(4));
+		car.run(CarValue.of(4));
 		int afterPosition = car.getPosition().getValue();
 
-		AssertionsForClassTypes.assertThat(isMove).isTrue();
 		AssertionsForClassTypes.assertThat(afterPosition)
 				.isGreaterThan(beforePosition);
 	}
@@ -51,21 +47,20 @@ public class CarTest {
 	public void 한_턴_동안_3이하가_나온다면_자동차는_움직이지_않는다() {
 		// given
 		Cars firstClassCars = new Cars(Arrays.asList(car));
-		List<Boolean> eachCarIsMoves;
+		int beforePosition = car.getPosition().getValue();
 
 		// when
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 					.thenReturn(2);
 
-			eachCarIsMoves = firstClassCars.eachRun();
+			firstClassCars.eachRun();
 		}
 
 		// then
-		Assertions.assertThat(eachCarIsMoves)
-				.isNotEmpty()
-				.startsWith(false)
-				.doesNotContainNull();
+		int afterPosition = car.getPosition().getValue();
+		AssertionsForClassTypes.assertThat(afterPosition)
+				.isEqualTo(beforePosition);
 	}
 
 	@Test
@@ -75,22 +70,25 @@ public class CarTest {
 		Car secondCar = new Car(CarName.of("두번째차"));
 		Car thirdCar = new Car(CarName.of("세번째차"));
 		Cars firstClassCars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar));
-		List<Boolean> eachCarIsMoves;
+		List<Integer> beforePositions = Arrays.asList(firstCar.getPosition().getValue(),
+				secondCar.getPosition().getValue(),
+				thirdCar.getPosition().getValue());
+
 
 		// when
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
 			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 					.thenReturn(2, 8, 9);
 
-			eachCarIsMoves = firstClassCars.eachRun();
+			firstClassCars.eachRun();
 		}
 
 		// then
-		Assertions.assertThat(eachCarIsMoves)
-				.isNotEmpty()
-				.startsWith(false)
-				.doesNotContainNull()
-				.containsSequence(true, true);
+		AssertionsForClassTypes.assertThat(firstCar.getPosition().getValue())
+				.isEqualTo(beforePositions.get(0));
+		AssertionsForClassTypes.assertThat(secondCar.getPosition().getValue())
+				.isGreaterThan(beforePositions.get(1));
+		AssertionsForClassTypes.assertThat(thirdCar.getPosition().getValue())
+				.isGreaterThan(beforePositions.get(2));
 	}
-
 }

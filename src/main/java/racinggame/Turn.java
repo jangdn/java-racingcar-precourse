@@ -14,4 +14,8 @@ public class Turn {
 	public int getNum() {
 		return num;
 	}
+
+	public boolean isProgressRound(int round) {
+		return this.num > round;
+	}
 }

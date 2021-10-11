@@ -11,13 +11,18 @@ public class Cars {
 		this.values = values;
 	}
 
-	public List<Boolean> eachRun() {
-		List<Boolean> isMoveCars = new ArrayList<>();
-		for (Car value : values) {
-			CarValue carValue = CarValue.createValue();
-			Car car = value;
-			isMoveCars.add(car.move(carValue));
+	public static Cars createCars(List<CarName> carNames) {
+		List<Car> cars = new ArrayList<>();
+		for (CarName carName : carNames) {
+			cars.add(new Car(carName));
 		}
-		return isMoveCars;
+		return new Cars(cars);
+	}
+
+	public void eachRun() {
+		for (Car car : values) {
+			CarValue carValue = CarValue.createValue();
+			car.run(carValue);
+		}
 	}
 }
