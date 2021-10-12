@@ -1,8 +1,8 @@
 package racinggame.model;
 
 public class Car {
-	private Position position;
-	private CarName name;
+	private final Position position;
+	private final CarName name;
 
 	public Car(CarName name) {
 		this.name = name;

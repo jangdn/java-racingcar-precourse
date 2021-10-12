@@ -6,7 +6,7 @@ public final class CarValue {
 	private static final int RESTRICT_END_NUM = 9;
 	private static final int RESTRICT_START_NUM = 0;
 
-	private int value;
+	private final int value;
 
 	private CarValue(int value) {
 		this.value = value;

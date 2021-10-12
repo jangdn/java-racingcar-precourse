@@ -3,7 +3,7 @@ package racinggame.model;
 import racinggame.GameMessage;
 
 public final class CarName {
-	private String name;
+	private final String name;
 
 	private CarName(String name) {
 		this.name = name;

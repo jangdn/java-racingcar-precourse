@@ -3,7 +3,7 @@ package racinggame.model;
 import racinggame.GameMessage;
 
 public final class Turn {
-	private int num;
+	private final int num;
 
 	private Turn(int num) {
 		this.num = num;
