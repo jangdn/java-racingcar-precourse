@@ -8,6 +8,9 @@ public final class Turn {
 	}
 
 	public static Turn of(int num) {
+		if(num < 0) {
+			throw new IllegalArgumentException(GameMessage.INVALID_INPUT_TURN_NUM_MINUS.getMessageForm());
+		}
 		return new Turn(num);
 	}
 

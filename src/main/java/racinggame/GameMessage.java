@@ -8,6 +8,7 @@ public enum GameMessage {
 
 	INVALID_INPUT_CAR_NAME("[ERROR] 자동차 이름이 너무 깁니다"),
 	INVALID_INPUT_TURN_NUM("[ERROR] 입력값에 숫자가 존재하지 않습니다."),
+	INVALID_INPUT_TURN_NUM_MINUS("[ERROR] 입력값에 음수_값은 존재할_수_없습니다."),
 
 	CONSOLE_RESULT("실행 결과");
 

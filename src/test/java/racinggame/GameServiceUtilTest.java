@@ -63,4 +63,17 @@ class GameServiceUtilTest {
 		// then
 		assertTrue(exception.getMessage().contains("ERROR"));
 	}
+
+	@Test
+	public void askTurnNum_숫자의_입력값에_음수_값이_있을_경우_exception() {
+		// given
+		String inputStr = "-1";
+
+		// when
+		Exception exception =
+				assertThrows(IllegalArgumentException.class, () -> GameServiceUtil.convertTurn(inputStr));
+
+		// then
+		assertTrue(exception.getMessage().contains("ERROR"));
+	}
 }
