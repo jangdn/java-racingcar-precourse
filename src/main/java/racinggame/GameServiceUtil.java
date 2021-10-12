@@ -6,6 +6,9 @@ import java.util.List;
 import nextstep.utils.Console;
 
 public class GameServiceUtil {
+
+	public static final String CAR_NAME_SEPARATOR = ",";
+
 	public static List<CarName> askCarNames() {
 		return askCarNameOnConsole();
 	}
@@ -21,7 +24,7 @@ public class GameServiceUtil {
 	}
 
 	static List<CarName> convertCarNames(String inputStrings) {
-		String[] carNameStrings = inputStrings.split(",");
+		String[] carNameStrings = inputStrings.split(CAR_NAME_SEPARATOR);
 		List<CarName> carNames = new ArrayList<>();
 		for (String carName : carNameStrings) {
 			carNames.add(CarName.of(carName));
@@ -48,7 +51,7 @@ public class GameServiceUtil {
 			int turnNum = Integer.parseInt(inputStrings);
 			return Turn.of(turnNum);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("[ERROR] 입력값에 숫자가 존재하지 않습니다.");
+			throw new IllegalArgumentException(GameMessage.INVALID_INPUT_TURN_NUM.getMessageForm());
 		}
 	}
 }

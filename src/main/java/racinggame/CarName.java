@@ -9,7 +9,7 @@ public final class CarName {
 
 	public static CarName of(String name) {
 		if(name.length() > 5) {
-			throw new IllegalArgumentException("[ERROR] 자동차 이름이 너무 깁니다");
+			throw new IllegalArgumentException(GameMessage.INVALID_INPUT_CAR_NAME.getMessageForm());
 		}
 
 		return new CarName(name);

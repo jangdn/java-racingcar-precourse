@@ -12,9 +12,11 @@ public class GameService {
 	}
 
 	public void play() {
+		System.out.println(String.format(GameMessage.ASK_CAR_NAME.getMessageForm(), GameServiceUtil.CAR_NAME_SEPARATOR));
 		List<CarName> carNames = GameServiceUtil.askCarNames();
 		Cars cars = Cars.createCars(carNames);
 
+		System.out.println(GameMessage.ASK_TURN_NUM.getMessageForm());
 		Turn turn = GameServiceUtil.askTurnNum();
 
 		for(int round = 0; turn.isProgressRound(round); round++) {
@@ -22,5 +24,6 @@ public class GameService {
 			cars.printCarState();
 			System.out.println();
 		}
+		System.out.println(String.format(GameMessage.GAME_RESULT.getMessageForm()));
 	}
 }
