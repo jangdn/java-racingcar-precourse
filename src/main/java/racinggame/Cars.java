@@ -35,4 +35,26 @@ public final class Cars {
 					car.getPositionState()));
 		}
 	}
+
+	public List<Car> findFarthestCars() {
+		List<Car> farthestCars = new ArrayList<>();
+		int maxPosition = 0;
+		for (Car car : values) {
+			maxPosition = judgeFarthestCar(farthestCars, maxPosition, car);
+		}
+		return farthestCars;
+	}
+
+	private int judgeFarthestCar(List<Car> farthestCars, int maxPosition, Car car) {
+		if(car.getPosition() > maxPosition) {
+			farthestCars.clear();
+			farthestCars.add(car);
+			return car.getPosition();
+		}
+
+		if(car.getPosition() == maxPosition) {
+			farthestCars.add(car);
+		}
+		return maxPosition;
+	}
 }

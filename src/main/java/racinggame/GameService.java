@@ -18,12 +18,16 @@ public class GameService {
 
 		System.out.println(GameMessage.ASK_TURN_NUM.getMessageForm());
 		Turn turn = GameServiceUtil.askTurnNum();
+		System.out.println();
 
+		System.out.println(GameMessage.CONSOLE_RESULT.getMessageForm());
 		for(int round = 0; turn.isProgressRound(round); round++) {
 			cars.eachRun();
 			cars.printCarState();
 			System.out.println();
 		}
-		System.out.println(String.format(GameMessage.GAME_RESULT.getMessageForm()));
+
+		List<Car> farthestCars = cars.findFarthestCars();
+		System.out.println(String.format(GameMessage.GAME_RESULT.getMessageForm(), CarNameUtil.from(farthestCars)));
 	}
 }

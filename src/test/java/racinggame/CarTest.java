@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mockStatic;
 
 import java.util.*;
 
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -90,5 +91,63 @@ public class CarTest {
 				.isGreaterThan(beforePositions.get(1));
 		AssertionsForClassTypes.assertThat(thirdCar.getPosition())
 				.isGreaterThan(beforePositions.get(2));
+	}
+
+	@Test
+	public void 가장_멀리_전진한_한대의_자동차를_뽑는다() {
+		// given
+		Car firstCar = new Car(CarName.of("첫번째차"));
+		Car secondCar = new Car(CarName.of("두번째차"));
+		Car thirdCar = new Car(CarName.of("세번째차"));
+		Cars firstClassCars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar));
+
+		// when
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+					.thenReturn(2, 8, 9)
+					.thenReturn(2, 8, 9)
+					.thenReturn(2, 2, 9);
+			for(int idx = 0; idx < 3; idx++) {
+				firstClassCars.eachRun();
+			}
+		}
+
+		// then
+		List<Car> winCars = firstClassCars.findFarthestCars();
+		Assertions.assertThat(winCars)
+				.isNotEmpty()
+				.extracting(Car::getName)
+				.startsWith("세번째차")
+				.doesNotContainNull();
+	}
+
+
+	@Test
+	public void 가장_멀리_전진한_자동차들_뽑는다() {
+		// given
+		Car firstCar = new Car(CarName.of("첫번째차"));
+		Car secondCar = new Car(CarName.of("두번째차"));
+		Car thirdCar = new Car(CarName.of("세번째차"));
+		Cars firstClassCars = new Cars(Arrays.asList(firstCar, secondCar, thirdCar));
+
+		// when
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+					.thenReturn(2, 8, 9)
+					.thenReturn(2, 8, 9)
+					.thenReturn(2, 8, 9);
+			for(int idx = 0; idx < 3; idx++) {
+				firstClassCars.eachRun();
+			}
+		}
+
+		// then
+		List<Car> winCars = firstClassCars.findFarthestCars();
+		Assertions.assertThat(winCars)
+				.isNotEmpty()
+				.extracting(Car::getName)
+				.startsWith("두번째차")
+				.doesNotContainNull()
+				.containsSequence("세번째차");
 	}
 }
