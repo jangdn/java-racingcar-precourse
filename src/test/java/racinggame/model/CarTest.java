@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.model;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -12,6 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.model.Car;
+import racinggame.model.CarName;
+import racinggame.model.CarValue;
+import racinggame.model.Cars;
 
 public class CarTest {
 
@@ -113,8 +117,8 @@ public class CarTest {
 		}
 
 		// then
-		List<Car> winCars = firstClassCars.findFarthestCars();
-		Assertions.assertThat(winCars)
+		WinnerCars winCars = firstClassCars.findWinnerCars();
+		Assertions.assertThat(winCars.getCars())
 				.isNotEmpty()
 				.extracting(Car::getName)
 				.startsWith("세번째차")
@@ -142,8 +146,8 @@ public class CarTest {
 		}
 
 		// then
-		List<Car> winCars = firstClassCars.findFarthestCars();
-		Assertions.assertThat(winCars)
+		WinnerCars winCars = firstClassCars.findWinnerCars();
+		Assertions.assertThat(winCars.getCars())
 				.isNotEmpty()
 				.extracting(Car::getName)
 				.startsWith("두번째차")

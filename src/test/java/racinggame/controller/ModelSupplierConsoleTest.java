@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,12 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class GameServiceUtilTest {
+import racinggame.model.CarName;
+import racinggame.model.Turn;
+
+class ModelSupplierConsoleTest {
+
+	private final ModelSupplierConsole modelSupplier = new ModelSupplierConsole();
 
 	@Test
 	public void askCarNames_콤마로_구분된_문자열을_이름으로_바꿔준다() {
@@ -15,7 +20,7 @@ class GameServiceUtilTest {
 		String inputStr = "아반떼,쏘나타,그렌져";
 
 		// when
-		List<CarName> carNames = GameServiceUtil.convertCarNames(inputStr);
+		List<CarName> carNames = modelSupplier.convertCarNames(inputStr);
 
 		// then
 		Assertions.assertThat(carNames)
@@ -33,7 +38,7 @@ class GameServiceUtilTest {
 
 		// when
 		Exception exception =
-				assertThrows(IllegalArgumentException.class, () -> GameServiceUtil.convertCarNames(inputStr));
+				assertThrows(IllegalArgumentException.class, () -> modelSupplier.convertCarNames(inputStr));
 
 		// then
 		assertTrue(exception.getMessage().contains("ERROR"));
@@ -45,7 +50,7 @@ class GameServiceUtilTest {
 		String inputStr = "1";
 
 		// when
-		Turn turn = GameServiceUtil.convertTurn(inputStr);
+		Turn turn = modelSupplier.convertTurn(inputStr);
 
 		// then
 		assertEquals(turn.getNum(), 1);
@@ -58,7 +63,7 @@ class GameServiceUtilTest {
 
 		// when
 		Exception exception =
-				assertThrows(IllegalArgumentException.class, () -> GameServiceUtil.convertTurn(inputStr));
+				assertThrows(IllegalArgumentException.class, () -> modelSupplier.convertTurn(inputStr));
 
 		// then
 		assertTrue(exception.getMessage().contains("ERROR"));
@@ -71,7 +76,7 @@ class GameServiceUtilTest {
 
 		// when
 		Exception exception =
-				assertThrows(IllegalArgumentException.class, () -> GameServiceUtil.convertTurn(inputStr));
+				assertThrows(IllegalArgumentException.class, () -> modelSupplier.convertTurn(inputStr));
 
 		// then
 		assertTrue(exception.getMessage().contains("ERROR"));

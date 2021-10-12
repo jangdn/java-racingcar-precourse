@@ -1,8 +1,10 @@
 package racinggame;
 
+import racinggame.controller.GameController;
+
 public class Application {
     public static void main(String[] args) {
-        GameService gameService = GameService.getInstance();
-        gameService.play();
+        GameController gameController = GameController.getInstance();
+        gameController.play();
     }
 }

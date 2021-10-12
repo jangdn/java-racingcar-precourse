@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.model;
 
 public final class MoveRule {
 	private static final int STANDARD_VALUE = 4;

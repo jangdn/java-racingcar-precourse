@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.model;
+
+import racinggame.GameMessage;
 
 public final class CarName {
 	private String name;

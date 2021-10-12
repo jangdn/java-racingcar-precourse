@@ -1,6 +1,4 @@
-package racinggame;
-
-import static racinggame.GameMessage.CAR_POSITION_STATE;
+package racinggame.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +9,10 @@ public final class Cars {
 
 	public Cars(List<Car> values) {
 		this.values = values;
+	}
+
+	public List<Car> getValue() {
+		return this.values;
 	}
 
 	public static Cars createCars(List<CarName> carNames) {
@@ -28,32 +30,23 @@ public final class Cars {
 		}
 	}
 
-	public void printCarState() {
-		for (Car car : values) {
-			System.out.println(String.format(CAR_POSITION_STATE.getMessageForm(),
-					car.getName(),
-					car.getPositionState()));
-		}
-	}
-
-	public List<Car> findFarthestCars() {
-		List<Car> farthestCars = new ArrayList<>();
+	public WinnerCars findWinnerCars() {
+		List<Car> winnerCars = new ArrayList<>();
 		int maxPosition = 0;
 		for (Car car : values) {
-			maxPosition = judgeFarthestCar(farthestCars, maxPosition, car);
+			maxPosition = judgeFarthestCar(winnerCars, maxPosition, car);
 		}
-		return farthestCars;
+		return new WinnerCars(winnerCars);
 	}
 
-	private int judgeFarthestCar(List<Car> farthestCars, int maxPosition, Car car) {
+	private int judgeFarthestCar(List<Car> winnerCars, int maxPosition, Car car) {
 		if(car.getPosition() > maxPosition) {
-			farthestCars.clear();
-			farthestCars.add(car);
+			winnerCars.clear();
+			winnerCars.add(car);
 			return car.getPosition();
 		}
-
 		if(car.getPosition() == maxPosition) {
-			farthestCars.add(car);
+			winnerCars.add(car);
 		}
 		return maxPosition;
 	}

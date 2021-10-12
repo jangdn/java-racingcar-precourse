@@ -1,9 +1,7 @@
-package racinggame;
+package racinggame.model;
 
 
 public final class Position {
-	public static final String PRINT_STATE = "-";
-
 	private int value;
 
 	private Position(int value) {
