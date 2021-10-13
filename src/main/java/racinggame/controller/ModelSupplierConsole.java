@@ -9,7 +9,6 @@ import racinggame.model.CarName;
 import racinggame.model.Turn;
 
 public class ModelSupplierConsole implements ModelSupplier {
-
 	public static final String CAR_NAME_SEPARATOR = ",";
 
 	@Override

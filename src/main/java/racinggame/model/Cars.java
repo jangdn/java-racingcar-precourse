@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Cars {
-
 	private final List<Car> values;
 
 	public Cars(List<Car> values) {

@@ -8,10 +8,6 @@ public final class Position {
 		this.value = value;
 	}
 
-	public static Position create(int value) {
-		return new Position(value);
-	}
-
 	public static Position initial() {
 		return new Position(0);
 	}

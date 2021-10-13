@@ -13,7 +13,6 @@ public final class CarName {
 		if(name.length() > 5) {
 			throw new IllegalArgumentException(GameMessage.INVALID_INPUT_CAR_NAME.getMessageForm());
 		}
-
 		return new CarName(name);
 	}
 
