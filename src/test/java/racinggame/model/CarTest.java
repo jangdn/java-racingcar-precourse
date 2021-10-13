@@ -3,7 +3,8 @@ package racinggame.model;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.AssertionsForClassTypes;
@@ -12,10 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
-import racinggame.model.Car;
-import racinggame.model.CarName;
-import racinggame.model.CarValue;
-import racinggame.model.Cars;
 
 public class CarTest {
 

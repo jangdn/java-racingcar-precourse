@@ -1,6 +1,5 @@
 package racinggame.model;
 
-
 public final class Position {
 	private int value;
 
