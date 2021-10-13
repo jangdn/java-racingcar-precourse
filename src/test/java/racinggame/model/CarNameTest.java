@@ -15,5 +15,4 @@ class CarNameTest {
 		// then
 		assertTrue(exception.getMessage().contains("ERROR"));
 	}
-
 }
