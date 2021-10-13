@@ -108,7 +108,7 @@ public class CarTest {
 					.thenReturn(2, 8, 9)
 					.thenReturn(2, 8, 9)
 					.thenReturn(2, 2, 9);
-			for(int idx = 0; idx < 3; idx++) {
+			for (int idx = 0; idx < 3; idx++) {
 				firstClassCars.eachRun();
 			}
 		}
@@ -137,7 +137,7 @@ public class CarTest {
 					.thenReturn(2, 8, 9)
 					.thenReturn(2, 8, 9)
 					.thenReturn(2, 8, 9);
-			for(int idx = 0; idx < 3; idx++) {
+			for (int idx = 0; idx < 3; idx++) {
 				firstClassCars.eachRun();
 			}
 		}

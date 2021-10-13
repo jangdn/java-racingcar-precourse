@@ -39,12 +39,12 @@ public final class Cars {
 	}
 
 	private int judgeFarthestCar(List<Car> winnerCars, int maxPosition, Car car) {
-		if(car.getPosition() > maxPosition) {
+		if (car.getPosition() > maxPosition) {
 			winnerCars.clear();
 			winnerCars.add(car);
 			return car.getPosition();
 		}
-		if(car.getPosition() == maxPosition) {
+		if (car.getPosition() == maxPosition) {
 			winnerCars.add(car);
 		}
 		return maxPosition;

@@ -10,7 +10,7 @@ public final class CarName {
 	}
 
 	public static CarName of(String name) {
-		if(name.length() > 5) {
+		if (name.length() > 5) {
 			throw new IllegalArgumentException(GameMessage.INVALID_INPUT_CAR_NAME.getMessageForm());
 		}
 		return new CarName(name);

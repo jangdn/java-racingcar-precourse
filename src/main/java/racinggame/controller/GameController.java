@@ -34,7 +34,7 @@ public class GameController {
 
 	private void execute(Cars cars, Turn turn) {
 		System.out.println(GameMessage.CONSOLE_RESULT.getMessageForm());
-		for(int round = 0; turn.isProgressRound(round); round++) {
+		for (int round = 0; turn.isProgressRound(round); round++) {
 			cars.eachRun();
 			CarsView.printCurrentState(cars);
 			System.out.println();
